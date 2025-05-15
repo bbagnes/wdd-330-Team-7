@@ -13,12 +13,13 @@ export default class ProductDetails {
 
     document
       .getElementById('addToCart')
-      .addEventListener('click', this.addToCart.bind(this));   
+      .addEventListener('click', this.addProductToCart.bind(this));   
   }  
 
-  addProductToCart(product) {
+  addProductToCart() {
         const cartItems = getLocalStorage('so-cart') || []; //Get items already in the cart, or add an empty array.
-        cartItems.push(product);
+        console.table(this.product);
+        cartItems.push(this.product);
         setLocalStorage('so-cart', cartItems);
   }
     
