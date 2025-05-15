@@ -3,11 +3,10 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 export default class ProductDetails {
   constructor(productId, dataSource) {
   this.productId = productId;
-  console.log(this.productId);
   this.product = {};
   this.dataSource = dataSource;
-  console.table(this.dataSource);
   }
+  
   async init() {
         this.product = await this.dataSource.findProductById(this.productId);
         console.table(this.product);
@@ -18,9 +17,9 @@ export default class ProductDetails {
       .addEventListener('click', this.addToCart.bind(this));   
   }  
 
-  addProductToCart() {
+  addProductToCart(product) {
         const cartItems = getLocalStorage('so-cart') || []; //Get items already in the cart, or add an empty array.
-        cartItems.push(this.product);
+        cartItems.push(product);
         setLocalStorage('so-cart', cartItems);
   }
     
