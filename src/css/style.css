@@ -193,13 +193,13 @@ button {
 
 /* End product list card */
 
-.product-detail {
+.productDetail {
   padding: 1em;
   max-width: 500px;
   margin: auto;
 }
 
-.product-detail img {
+.productDetail img {
   width: 100%;
 }
 
