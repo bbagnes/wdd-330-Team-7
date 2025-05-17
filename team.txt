@@ -1,3 +1,3 @@
 Trello Link: https://trello.com/b/75hUqAby/sleep-outside-team-8
->>>>>>> a638e726965b88626aebca9a79b6166b46bf9e0d
-Project Authors: Brigham Bagnes, Paul Richard Shaw
+
+Project Authors: Brigham Bagnes, Paul Richard Shaw, Wesley Raymundo
