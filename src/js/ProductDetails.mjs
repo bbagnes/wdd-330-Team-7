@@ -9,6 +9,17 @@ export default class ProductDetails {
 
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
+
+    // message if the item is not found
+    if (!this.product) {
+      console.error('Product not found for ID:', this.productId);
+      document.querySelector('.product-details')?.insertAdjacentHTML(
+        'beforeend',
+        `<p class="error-message">Sorry, we couldn't find this product.</p>`
+      );
+      return;
+    }
+
     this.renderProductDetails();
 
     document.getElementById('addToCart')
