@@ -7,18 +7,9 @@ const dataSource = new ProductData('tents');
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-function addProductToCart(product) {
-  const cartItems = getLocalStorage('so-cart') || []; //Get items already in the cart, or add an empty array.
-  cartItems.push(product);
-  setLocalStorage('so-cart', cartItems);
-}
-// add to cart button event handler
-async function addToCartHandler(e) {
-  const product = await dataSource.findProductById(e.target.dataset.id);
-  addProductToCart(product);
-}
+// remove the add product to cart as it is now being handled within productDetails.mjs
+// removed the add to cart button event handler async function as it is also now being handled within productDetails.mjs
 
-// add listener to Add to Cart button
-document
-  .getElementById('addToCart')
-  .addEventListener('click', addToCartHandler);
+
+// removed the add listener to Add to Cart button eventListener as it is now being handled within productDetails.mjs
+

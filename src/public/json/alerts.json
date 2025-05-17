@@ -1,0 +1,13 @@
+[
+    {
+        "message": "Save 10% Today Only",
+        "background": "darkblue",
+        "color": "white"
+    },
+
+    { 
+        "message": "New product launch Friday",
+        "background": "darkgreen",
+        "color": "white"
+    }
+]

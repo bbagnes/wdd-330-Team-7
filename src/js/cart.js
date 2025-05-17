@@ -1,4 +1,5 @@
-import { getLocalStorage } from './utils.mjs';
+import { getLocalStorage, normalizeImagePath } from './utils.mjs';
+
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
@@ -7,6 +8,7 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
+  const imagePath = normalizeImagePath(item.Image);
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
