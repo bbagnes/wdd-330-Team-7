@@ -17,7 +17,12 @@ export default class ProductDetails {
   }  
 
   addProductToCart() {
-        const cartItems = getLocalStorage('so-cart') || []; //Get items already in the cart, or add an empty array.
+        let cartItems = getLocalStorage('so-cart') || [];
+
+        if (!Array.isArray(cartItems)) {
+            cartItems = [cartItems];
+        }
+
         console.table(this.product);
         cartItems.push(this.product);
         setLocalStorage('so-cart', cartItems);
@@ -37,7 +42,7 @@ function productDetailsTemplate(product) {
     productImage.src = product.Image;
     productImage.alt = product.NameWithoutBrand;
   document.querySelector('.productDescription').innerHTML = product.DescriptionHtmlSimple;
-  document.querySelector('.productColor').textContent = product.Colors[1];
+  document.querySelector('.productColor').textContent = product.Colors[0].ColorName;
   document.querySelector('.productCardPrice').innerHTML = `$${product.FinalPrice.toFixed(2)}`;
   document.getElementById('addToCart').dataset.id = product.Id;
 }
