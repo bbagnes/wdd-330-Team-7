@@ -21,5 +21,5 @@ document
   .getElementById('addToCart')
   .addEventListener('click', addToCartHandler);
 */
-  
+
 loadHeaderFooter();

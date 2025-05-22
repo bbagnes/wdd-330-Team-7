@@ -3,10 +3,10 @@ import { loadHeaderFooter } from './utils.mjs';
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
-  
+
   const htmlItems = cartItems
-  ? cartItems.map((item) => cartItemTemplate(item)).join('')
-  : `<p>Your cart is empty!</p>`;
+    ? cartItems.map((item) => cartItemTemplate(item)).join('')
+    : `<p>Your cart is empty!</p>`;
 
   document.querySelector('.product-list').innerHTML = htmlItems;
 }
