@@ -160,12 +160,17 @@ button {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
-  justify-content: center;
+  justify-content:space-around;
 }
 
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
+}
+
+.product-list img {
+  width: 150px;
+  margin: 10px;
 }
 
 /* Styles for product lists */
