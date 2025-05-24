@@ -60,5 +60,4 @@ function productDetailsTemplate(product) {
     addToCartBtn.dataset.id = product.Id;
   }
 
-}
 
