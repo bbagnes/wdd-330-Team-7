@@ -4,8 +4,6 @@ import ProductList from './ProductList.mjs';
 
 const category = getParam('category');
 const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
-// console.log('Category:', category);
-// console.log('Formatted:', formattedCategory);
 
 document.querySelector('.title').textContent = formattedCategory;
 

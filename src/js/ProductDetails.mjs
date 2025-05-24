@@ -1,19 +1,18 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
 export default class ProductDetails {
-
   constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
   }
 
-  async init() {    
-    this.product = await this.dataSource.findProductById(this.productId);    
-    this.renderProductDetails();    
+  async init() {
+    this.product = await this.dataSource.findProductById(this.productId);
+    this.renderProductDetails();
     document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+      .getElementById('addToCart')
+      .addEventListener('click', this.addProductToCart.bind(this));
   }
 
   addProductToCart() {
@@ -23,7 +22,6 @@ export default class ProductDetails {
             cartItems = [cartItems];
         }
 
-        console.table(this.product);
         cartItems.push(this.product);
         setLocalStorage('so-cart', cartItems);
   }
@@ -53,16 +51,18 @@ function productDetailsTemplate(product) {
 
   if (product.SuggestedRetailPrice > product.FinalPrice) {
     const discount = product.SuggestedRetailPrice - product.FinalPrice;
-    const discountPercentage = Math.round((discount / product.SuggestedRetailPrice) * 100);
-    document.querySelector("#p-discount").textContent = `You save ${discountPercentage}%!`;
+
+    const discountPercentage = Math.round(
+      (discount / product.SuggestedRetailPrice) * 100,
+    );
+    document.querySelector('#p-discount').textContent =
+      `You save ${discountPercentage}%!`;
   } else {
-    document.querySelector("#p-discount").textContent = "";
+    document.querySelector('#p-discount').textContent = '';
   }
 
-  const addToCartBtn = document.querySelector("#addToCart");
+  const addToCartBtn = document.querySelector('#addToCart');
   if (addToCartBtn) {
     addToCartBtn.dataset.id = product.Id;
   }
 }
-
-
