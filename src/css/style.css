@@ -268,17 +268,14 @@ button {
 }
 
 .discount-badge {
-  background-color: #ffe8e8;  /* Light pink background */
-  color: #b30000;             /* Strong red text */
+  background-color: #ffe8e8; /* Light pink background */
+  color: #b30000; /* Strong red text */
   font-weight: bold;
   padding: 0.5rem 0.75rem;
   border-radius: 5px;
   margin: 0.5rem 0;
   display: inline-block;
 }
-
-
-
 
 @media screen and (min-width: 500px) {
   body {

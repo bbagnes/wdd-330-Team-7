@@ -10,6 +10,4 @@ const dataSource = new ProductData();
 const productDetails = new ProductDetails(productId, dataSource);
 productDetails.init();
 
-
-
 loadHeaderFooter();
