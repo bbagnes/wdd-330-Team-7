@@ -24,6 +24,19 @@
       </section>
     </main>
 
+   <template id="cart-template">
+      <li class="cart-card">
+        <a href="/product.html?product={{Id}}">
+          <img src="{{Image}}" alt="{{Name}}" />  
+          <h2 class="card__name">{{Name}}</h2>
+        </a>
+        <p class="cart-card__color">Color: {{Color}}</p>
+        <p class="cart-card__quantity">Qty: {{Quantity}}</p>
+      </li>
+    </template>
+
+    <ul id="cart-list" class="product-list"></ul>
+ 
     <footer id="footer"></footer>
   </body>
 </html>
