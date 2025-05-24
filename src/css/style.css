@@ -241,6 +241,33 @@ button {
   grid-column: 3;
 }
 
+.categories {
+  padding: 2rem;
+  text-align: center;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.category-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-link img {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
