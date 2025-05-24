@@ -12,7 +12,7 @@ export default class ProductDetails {
     this.product = await this.dataSource.findProductById(this.productId);    
     this.renderProductDetails();    
     document
-      .getElementById("add-to-cart")
+      .getElementById("addToCart")
       .addEventListener("click", this.addProductToCart.bind(this));
   }
 
@@ -55,6 +55,10 @@ function productDetailsTemplate(product) {
     document.querySelector("#p-discount").textContent = "";
   }
 
-  document.querySelector("#add-to-cart").dataset.id = product.Id;
+  const addToCartBtn = document.querySelector("#addToCart");
+  if (addToCartBtn) {
+    addToCartBtn.dataset.id = product.Id;
+  }
+
 }
 
