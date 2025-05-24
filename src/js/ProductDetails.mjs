@@ -43,6 +43,21 @@ function productDetailsTemplate(product) {
   document.querySelector("#p-color").textContent = product.Colors[0].ColorName;
   document.querySelector("#p-description").innerHTML = product.DescriptionHtmlSimple;
 
-  document.querySelector("#addToCart").dataset.id = product.Id;
-}
+  product.SuggestedRetailPrice = product.FinalPrice + 50;
+
+
+  if (product.SuggestedRetailPrice > product.FinalPrice) {
+    const discount = product.SuggestedRetailPrice - product.FinalPrice;
+    const discountPercentage = Math.round((discount / product.SuggestedRetailPrice) * 100);
+    document.querySelector("#p-discount").textContent = `You save ${discountPercentage}%!`;
+
+  } else {
+    document.querySelector("#p-discount").textContent = "";
+  }
+
+  const addToCartBtn = document.querySelector("#addToCart");
+  if (addToCartBtn) {
+    addToCartBtn.dataset.id = product.Id;
+  }
+
 
