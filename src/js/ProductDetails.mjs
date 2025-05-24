@@ -1,48 +1,63 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
+
   constructor(productId, dataSource) {
-  this.productId = productId;
-  this.product = {};
-  this.dataSource = dataSource;
+    this.productId = productId;
+    this.product = {};
+    this.dataSource = dataSource;
   }
 
-  async init() {
-        this.product = await this.dataSource.findProductById(this.productId);
-        this.renderProductDetails();     
-
+  async init() {    
+    this.product = await this.dataSource.findProductById(this.productId);    
+    this.renderProductDetails();    
     document
-      .getElementById('addToCart')
-      .addEventListener('click', this.addProductToCart.bind(this));   
-  }  
+      .getElementById("addToCart")
+      .addEventListener("click", this.addProductToCart.bind(this));
+  }
 
   addProductToCart() {
-        const cartItems = getLocalStorage('so-cart') || []; //Get items already in the cart, or add an empty array.
-        console.table(this.product);
-        cartItems.push(this.product);
-        setLocalStorage('so-cart', cartItems);
+    const cartItems = getLocalStorage("so-cart") || [];
+    cartItems.push(this.product);
+    setLocalStorage("so-cart", cartItems);
   }
-    
+
   renderProductDetails() {
     productDetailsTemplate(this.product);
   }
 }
 
 function productDetailsTemplate(product) {
+  document.querySelector("h2").textContent = product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
+  document.querySelector("#p-brand").textContent = product.Brand.Name;
+  document.querySelector("#p-name").textContent = product.NameWithoutBrand;
 
-  document.querySelector('h2').textContent = product.Brand.Name;
-  document.querySelector('h3').textContent = product.NameWithoutBrand;
-    
-  const productImage = document.querySelector('.productImage')
-    productImage.src = product.Image;
-    productImage.alt = product.NameWithoutBrand;
-  document.querySelector('.productDescription').innerHTML = product.DescriptionHtmlSimple;
-  document.querySelector('.productColor').textContent = product.Colors[1];
-  document.querySelector('.productCardPrice').innerHTML = `$${product.FinalPrice.toFixed(2)}`;
-  document.getElementById('addToCart').dataset.id = product.Id;
-}
+  const productImage = document.querySelector("#p-image");
+  productImage.src = product.Images.PrimaryExtraLarge;
+  productImage.alt = product.NameWithoutBrand;
+  const euroPrice = new Intl.NumberFormat('de-DE',
+    {
+      style: 'currency', currency: 'EUR',
+    }).format(Number(product.FinalPrice) * 0.85);
+  document.querySelector("#p-price").textContent = `${euroPrice}`;
+  document.querySelector("#p-color").textContent = product.Colors[0].ColorName;
+  document.querySelector("#p-description").innerHTML = product.DescriptionHtmlSimple;
 
-  
+  product.SuggestedRetailPrice = product.FinalPrice + 50;
 
+
+  if (product.SuggestedRetailPrice > product.FinalPrice) {
+    const discount = product.SuggestedRetailPrice - product.FinalPrice;
+    const discountPercentage = Math.round((discount / product.SuggestedRetailPrice) * 100);
+    document.querySelector("#p-discount").textContent = `You save ${discountPercentage}%!`;
+
+  } else {
+    document.querySelector("#p-discount").textContent = "";
+  }
+
+  const addToCartBtn = document.querySelector("#addToCart");
+  if (addToCartBtn) {
+    addToCartBtn.dataset.id = product.Id;
+  }
 
 
