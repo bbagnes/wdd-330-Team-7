@@ -16,9 +16,14 @@ export default class ProductDetails {
   }
 
   addProductToCart() {
-    const cartItems = getLocalStorage('so-cart') || [];
-    cartItems.push(this.product);
-    setLocalStorage('so-cart', cartItems);
+        let cartItems = getLocalStorage('so-cart') || [];
+
+        if (!Array.isArray(cartItems)) {
+            cartItems = [cartItems];
+        }
+
+        cartItems.push(this.product);
+        setLocalStorage('so-cart', cartItems);
   }
 
   renderProductDetails() {
@@ -27,27 +32,26 @@ export default class ProductDetails {
 }
 
 function productDetailsTemplate(product) {
-  document.querySelector('h2').textContent =
-    product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
-  document.querySelector('#p-brand').textContent = product.Brand.Name;
-  document.querySelector('#p-name').textContent = product.NameWithoutBrand;
-
-  const productImage = document.querySelector('#p-image');
-  productImage.src = product.Images.PrimaryExtraLarge;
+  document.querySelector('h2').textContent = product.Brand.Name;
+  document.querySelector('h3').textContent = product.NameWithoutBrand;
+  
+  const productImage = document.querySelector('.productImage');
+  productImage.src = product.Image;
   productImage.alt = product.NameWithoutBrand;
-  const euroPrice = new Intl.NumberFormat('de-DE', {
-    style: 'currency',
-    currency: 'EUR',
-  }).format(Number(product.FinalPrice) * 0.85);
-  document.querySelector('#p-price').textContent = `${euroPrice}`;
-  document.querySelector('#p-color').textContent = product.Colors[0].ColorName;
-  document.querySelector('#p-description').innerHTML =
-    product.DescriptionHtmlSimple;
+
+  const euroPrice = new Intl.NumberFormat('de-DE',
+    {
+      style: 'currency', currency: 'EUR',
+    }).format(Number(product.FinalPrice) * 0.85);
+  document.querySelector("#p-price").textContent = `${euroPrice}`;
+  document.querySelector("#p-color").textContent = product.Colors[0].ColorName;
+  document.querySelector("#p-description").innerHTML = product.DescriptionHtmlSimple;
 
   product.SuggestedRetailPrice = product.FinalPrice + 50;
 
   if (product.SuggestedRetailPrice > product.FinalPrice) {
     const discount = product.SuggestedRetailPrice - product.FinalPrice;
+
     const discountPercentage = Math.round(
       (discount / product.SuggestedRetailPrice) * 100,
     );
