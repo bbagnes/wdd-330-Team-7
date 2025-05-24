@@ -4,21 +4,12 @@ import ProductDetails from './ProductDetails.mjs';
 import { loadHeaderFooter } from './utils.mjs';
 
 const productId = getParam('product');
-const dataSource = new ProductData('tents');
+console.log('Loaded productId from URL:', productId);
+const dataSource = new ProductData();
 
 const productDetails = new ProductDetails(productId, dataSource);
 productDetails.init();
 
-/* add to cart button event handler
-async function addToCartHandler(e) {
-  const product = await dataSource.findProductById(e.target.dataset.id);
-  addProductToCart(product);
-}
 
-// add listener to Add to Cart button
-document
-  .getElementById('addToCart')
-  .addEventListener('click', addToCartHandler);
-*/
 
 loadHeaderFooter();

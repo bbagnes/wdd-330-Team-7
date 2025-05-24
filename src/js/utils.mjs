@@ -22,42 +22,42 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+// get the product id from the query string
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get("product");
+  const product = urlParams.get(param);
   return product
 }
 
-export function renderListWithTemplate(templateFn, parentElement, list, position = 'afterbegin', clear) {
-  const listItems = list.map(templateFn).join('');
-
-  if (clear === true) {
-    parentElement.innerHTML = '';
+export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(template);
+  
+  if (clear) {
+    parentElement.innerHTML = "";
   }
-
-  parentElement.insertAdjacentHTML(position, listItems);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.innerHTML = template;
-  
-  if(callback) {
+  if (callback) {
     callback(data);
   }
 }
 
-export async function loadTemplate(path) {
+async function loadTemplate(path) {
   const res = await fetch(path);
   const template = await res.text();
   return template;
 }
 
-export async function loadHeaderFooter(params) {
-  const headerTemplate = await loadTemplate('../public/partials/header.html');
-  const footerTemplate = await loadTemplate('../public/partials/footer.html');
-  const headerElement = document.querySelector('#header');
-  const footerElement = document.querySelector('#footer');
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+
+  const headerElement = document.querySelector("#header");
+  const footerElement = document.querySelector("#footer");
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
