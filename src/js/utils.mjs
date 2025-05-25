@@ -68,3 +68,11 @@ export async function loadHeaderFooter(params) {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function toTitleCase(str) {
+  return str
+    .replace('-', ' ')
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
