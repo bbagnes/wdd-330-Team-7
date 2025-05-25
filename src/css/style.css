@@ -94,6 +94,23 @@ p {
   margin-top: -1.7em;
 }
 
+.categories {
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.categories a {
+  width: 5rem;
+  height: auto;
+
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
