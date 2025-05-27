@@ -21,12 +21,13 @@ export default class ProductList {
   }
 
   async init() {
-    const list = await this.dataSource.getData(this.category);
-    this.renderList(list);
+    this.list = await this.dataSource.getData(this.category);
+    this.renderList();
     document.querySelector('.title').textContent = this.category;
   }
 
-  renderList(list) {
-    renderListWithTemplate(productCardTemplate, this.listElement, list);
+  renderList(sorting = 'name') {
+    console.log(`Render list sorting by: ${sorting}`);
+    renderListWithTemplate(productCardTemplate, this.listElement, this.list, 'afterbegin', true);
   }
 }

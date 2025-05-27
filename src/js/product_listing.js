@@ -14,3 +14,8 @@ const element = document.querySelector('.product-list');
 const listing = new ProductList(category, dataSource, element);
 
 listing.init();
+
+const sort = document.querySelector('#sort');
+sort.addEventListener('change', ev => {
+    listing.renderList(ev.target.value);
+});

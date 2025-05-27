@@ -254,6 +254,17 @@ button:active {
   width: 100%;
 }
 
+#productListTitle {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+#sort {
+  font-size: 1rem;
+  padding: .25rem;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;

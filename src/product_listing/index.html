@@ -10,7 +10,18 @@
     <header id="header"></header>
 
     <main>
-      <h2>Top Products: <span class="title highlight"></span></h2>
+      <div id="productListTitle">
+        <h2>Top Products: <span class="title highlight"></span></h2>
+  
+        <div id="sortSelection">
+          <label for="sort">Sort by:</label>
+          <select id="sort">
+            <option value="name">Name</option>
+            <option value="price">Price</option>
+          </select>
+        </div>
+      </div>
+
       <ul class="product-list"></ul>
     </main>
 
