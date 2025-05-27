@@ -27,7 +27,16 @@ export default class ProductList {
   }
 
   renderList(sorting = 'name') {
-    console.log(`Render list sorting by: ${sorting}`);
+    this.sortList(sorting);
     renderListWithTemplate(productCardTemplate, this.listElement, this.list, 'afterbegin', true);
+  }
+
+  sortList(sorting = 'name') {
+    if (sorting === 'name') {
+      this.list.sort((a, b) => a.Name.localeCompare(b.Name));
+    }
+    else if (sorting === 'price') {
+      this.list.sort((a, b) => a.FinalPrice - b.FinalPrice);
+    }
   }
 }
