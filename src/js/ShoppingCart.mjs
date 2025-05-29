@@ -27,8 +27,8 @@ export function renderCartItem(item) {
 
     return template
         .replace(/{{Id}}/g, item.Id)
-        // .replace(/{{Image}}/g, item.Image) // <-- This fixed the issue with the image not showing up
-        .replace(/{{Image}}/g, item.Images.PrimaryMedium) // <-- this line was not working
+        .replace(/{{Image}}/g, item.Image) // <-- This fixed the issue with the image not showing up
+        // .replace(/{{Image}}/g, item.Images.PrimaryMedium) // <-- this line was not working
         .replace(/{{Name}}/g, item.NameWithoutBrand)
         .replace(/{{Color}}/g, item.Colors?.[0]?.ColorName || "N/A")
         .replace(/{{Quantity}}/g, item.Quantity || 1)
