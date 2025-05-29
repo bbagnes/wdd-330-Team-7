@@ -1,42 +1,50 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>Sleep Outside | Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/css/style.css" />
+  <title>Sleep Outside | Cart</title>
 
-    <script src="../js/cart.js" type="module"></script>
-  </head>
+  <link rel="stylesheet" href="/css/style.css" />
 
-  <body>
-    <header class="divider" id="header"></header>
+  <script src="../js/cart.js" type="module"></script>
+</head>
 
-    <main class="divider">
-      <section class="products">
-        <h2>My Cart</h2>
+<body>
+  <header class="divider" id="header"></header>
 
-        <ul class="product-list"></ul>
-      </section>
-    </main>
+  <main class="divider">
+    <section class="products">
+      <h2>My Cart</h2>
 
-   <template id="cart-template">
-      <li class="cart-card">
-        <a href="/product.html?product={{Id}}">
-          <img src="{{Image}}" alt="{{Name}}" />  
-          <h2 class="card__name">{{Name}}</h2>
-        </a>
+      <!-- <ul class="product-list"></ul> -->
+
+    </section>
+  </main>
+
+  <template id="cart-template">
+    <li class="cart-card">
+      <a href="/product_pages/index.html?product={{Id}}">
+        <img src="{{Image}}" alt="Product image" />
+      </a>
+      <div class="card__info">
+        <h2 class="card__name">{{Name}}</h2>
         <p class="cart-card__color">Color: {{Color}}</p>
         <p class="cart-card__quantity">Qty: {{Quantity}}</p>
-      </li>
-    </template>
+        <p class="cart-card__price">Price: {{Price}}</p>
+      </div>
+    </li>
+  </template>
 
-    <ul id="cart-list" class="product-list"></ul>
- 
-    <footer id="footer"></footer>
-  </body>
+
+
+  <ul id="cart-list" class="product-list"></ul>
+
+  <footer id="footer"></footer>
+</body>
+
 </html>

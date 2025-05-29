@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -130,6 +130,18 @@ button {
 .cart:hover svg {
   fill: gray;
 }
+
+#cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-card {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
 
 /* End cart icon styles */
 
@@ -268,8 +280,10 @@ button {
 }
 
 .discount-badge {
-  background-color: #ffe8e8; /* Light pink background */
-  color: #b30000; /* Strong red text */
+  background-color: #ffe8e8;
+  /* Light pink background */
+  color: #b30000;
+  /* Strong red text */
   font-weight: bold;
   padding: 0.5rem 0.75rem;
   border-radius: 5px;

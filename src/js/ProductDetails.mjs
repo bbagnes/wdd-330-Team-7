@@ -8,17 +8,28 @@ export default class ProductDetails {
     this.dataSource = dataSource;
   }
 
-  async init() {    
-    this.product = await this.dataSource.findProductById(this.productId);    
-    this.renderProductDetails();    
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+  async init() {
+    this.product = await this.dataSource.findProductById(this.productId);
+    this.renderProductDetails();
+
+    console.log("Initializing ProductDetails...");
+
+    const addToCartButton = document.getElementById("addToCart");
+    console.log("Button found?", addToCartButton);
+
+    addToCartButton.addEventListener("click", this.addProductToCart.bind(this));
   }
 
   addProductToCart() {
     const cartItems = getLocalStorage("so-cart") || [];
-    cartItems.push(this.product);
+    console.log("Adding to cart:", this.product);
+
+    const productToSave = {
+      ...this.product,
+      Image: this.product.Images?.PrimaryMedium || this.product.Images?.PrimarySmall || "", // fallback
+    };
+
+    cartItems.push(productToSave);
     setLocalStorage("so-cart", cartItems);
   }
 

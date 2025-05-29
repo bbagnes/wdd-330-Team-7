@@ -9,7 +9,7 @@ function convertToJson(res) {
 }
 
 export default class ProductData {
-  constructor() {}
+  constructor() { }
 
   async getData(category) {
     const response = await fetch(`${baseURL}products/search/${category}`);
@@ -20,6 +20,8 @@ export default class ProductData {
   async findProductById(id) {
     const response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(response);
+    console.log("Fetched full product data:", data.Result);
     return data.Result;
   }
+
 }

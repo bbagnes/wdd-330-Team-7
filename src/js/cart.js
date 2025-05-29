@@ -1,8 +1,8 @@
+import { getLocalStorage } from './utils.mjs';
 import ShoppingCart from './ShoppingCart.mjs';
-import { loadHeaderFooter } from './utils.mjs';
+import { renderCartItem } from './ShoppingCart.mjs';
 
-loadHeaderFooter();
+console.log("🛒 Cart contents:", getLocalStorage('so-cart'));
 
-const cartListElement = document.getElementById('cart-list');
-const cart = new ShoppingCart(cartListElement, 'cart-template');
+const cart = new ShoppingCart('cart-list', renderCartItem);
 cart.displayCart();
