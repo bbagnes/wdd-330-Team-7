@@ -1,50 +1,45 @@
 <!doctype html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Cart</title>
 
-  <title>Sleep Outside | Cart</title>
+    <link rel="stylesheet" href="/css/style.css" />
 
-  <link rel="stylesheet" href="/css/style.css" />
+    <script src="../js/cart.js" type="module"></script>
+  </head>
 
-  <script src="../js/cart.js" type="module"></script>
-</head>
+  <body>
+    <header class="divider" id="header"></header>
 
-<body>
-  <header class="divider" id="header"></header>
+    <main class="divider">
+      <section class="products">
+        <h2>My Cart</h2>
 
-  <main class="divider">
-    <section class="products">
-      <h2>My Cart</h2>
+        <!-- <ul class="product-list"></ul> -->
+      </section>
+    </main>
 
-      <!-- <ul class="product-list"></ul> -->
+    <template id="cart-template">
+      <li class="cart-card">
+        <a href="/product_pages/index.html?product={{Id}}">
+          <img src="{{Image}}" alt="Product image" />
+        </a>
+        <div class="card__info">
+          <h2 class="card__name">{{Name}}</h2>
+          <p class="cart-card__color">Color: {{Color}}</p>
+          <p class="cart-card__quantity">Qty: {{Quantity}}</p>
+          <p class="cart-card__price">Price: {{Price}}</p>
+        </div>
+      </li>
+    </template>
 
-    </section>
-  </main>
+    <ul id="cart-list" class="product-list"></ul>
 
-  <template id="cart-template">
-    <li class="cart-card">
-      <a href="/product_pages/index.html?product={{Id}}">
-        <img src="{{Image}}" alt="Product image" />
-      </a>
-      <div class="card__info">
-        <h2 class="card__name">{{Name}}</h2>
-        <p class="cart-card__color">Color: {{Color}}</p>
-        <p class="cart-card__quantity">Qty: {{Quantity}}</p>
-        <p class="cart-card__price">Price: {{Price}}</p>
-      </div>
-    </li>
-  </template>
-
-
-
-  <ul id="cart-list" class="product-list"></ul>
-
-  <footer id="footer"></footer>
-</body>
-
+    <footer id="footer"></footer>
+  </body>
 </html>
