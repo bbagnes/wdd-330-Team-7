@@ -8,17 +8,89 @@
 
     <title>Sleep Outside | Checkout</title>
 
+    <link rel="stylesheet" href="/css/style.css" />
+    
     <script src="../js/checkout.js" type="module"></script>
-
-    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
     <header class="divider" id="header"></header>
 
-    <main class="divider">
-      <section class="products">
+    <main class="checkout">
+      <section>
         <h2>Review & Place your Order</h2>
+
+        <form action="">
+          <fieldset>
+            <legend>Customer Name</legend>
+            <div class="checkoutName">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required>
+              
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </fieldset>
+          
+          <fieldset>
+            <legend>Address</legend>
+            <div class="checkoutAddress">
+              <label for="street">Street</label>
+              <input type="text" id="street" name="street" required>
+    
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" required>
+    
+              <label for="state">State</label>
+              <input type="text" id="state" name="state" required>
+    
+              <label for="zipcode">Zip Code</label>
+              <input type="text" id="zipcode" name="zipcode" required>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment</legend>
+            <div class="checkoutPayment">
+              <label for="creditCardNumber">Credit Card Number</label>
+              <input type="text" id="creditCardNumber" name="creditCardNumber" placeholder="1234 5678 9012 3456" required>
+    
+              <label for="expirationDate">Expiration Date</label>
+              <input type="text" id="expirationDate" name="expirationDate" placeholder="MM/YY" required>
+    
+              <label for="securityCode">Security Code</label>
+              <input type="text" id="securityCode" name="securityCode" placeholder="123" required>
+            </div>
+          </fieldset>
+
+          <input class="button" type="submit" value="Submit Order">
+        </form>
+      </section>
+
+      <section id="orderSummary">
+        <h2>Order Summary</h2>
+
+        <dl>
+          <div>
+            <dt>Subtotal:</dt>
+            <dd id="subtotal">123</dd>
+          </div>
+
+          <div>
+            <dt>Tax:</dt>
+            <dd id="tax">123</dd>
+          </div>
+
+          <div>
+            <dt>Shipping Estimate:</dt>
+            <dd id="shippingEstimate">123</dd>
+          </div>
+
+          <div>
+            <dt>Order Total:</dt>
+            <dd id="orderTotal">123</dd>
+          </div>
+        </dl>
       </section>
     </main>
 

@@ -20,26 +20,24 @@
       <section class="products">
         <h2>My Cart</h2>
 
-        <!-- <ul class="product-list"></ul> -->
+        <ul id="cart-list" class="product-list"></ul>
+        <template id="cart-template">
+          <li class="cart-card">
+            <a href="/product_pages/index.html?product={{Id}}">
+              <img src="{{Image}}" alt="Product image" />
+            </a>
+            <div class="card__info">
+              <h2 class="card__name">{{Name}}</h2>
+              <p class="cart-card__color">Color: {{Color}}</p>
+              <p class="cart-card__quantity">Qty: {{Quantity}}</p>
+              <p class="cart-card__price">Price: {{Price}}</p>
+            </div>
+          </li>
+        </template>
+
+        <a href="/checkout/index.html" class="button">Checkout</a>
       </section>
     </main>
-
-    <template id="cart-template">
-      <li class="cart-card">
-        <a href="/product_pages/index.html?product={{Id}}">
-          <img src="{{Image}}" alt="Product image" />
-        </a>
-        <div class="card__info">
-          <h2 class="card__name">{{Name}}</h2>
-          <p class="cart-card__color">Color: {{Color}}</p>
-          <p class="cart-card__quantity">Qty: {{Quantity}}</p>
-          <p class="cart-card__price">Price: {{Price}}</p>
-        </div>
-      </li>
-    </template>
-
-    <ul id="cart-list" class="product-list"></ul>
-
     <footer id="footer"></footer>
   </body>
 </html>

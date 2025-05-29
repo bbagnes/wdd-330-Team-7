@@ -110,6 +110,38 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: var(--dark-grey);
+}
+
+button:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(3px);
+}
+
+.button {
+  width: 10rem;
+  padding: 0.5em;
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: 1rem auto;
+  display: block;
+  border: 0;
+  font-size: var(--large-font);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--dark-grey);
+}
+
+.button:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(3px);
+}
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
@@ -289,6 +321,64 @@ button {
   margin: 0.5rem 0;
   display: inline-block;
 }
+
+/* Start checkout styles */
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+main section {
+  margin: 2rem;
+}
+
+form {
+  margin: 0 auto;
+  width: 20rem;
+}
+
+fieldset {
+  margin-top: 1rem;
+}
+
+legend {
+  margin-left: 1rem;
+}
+
+.checkoutName, .checkoutAddress, .checkoutPayment {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+form label {
+  margin-top: 1rem;
+}
+
+form input {
+  padding: 0.25rem;
+}
+
+dl {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid gray;
+  border-radius: 0.5rem;
+}
+
+dl div {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+/* End checkout styles */
 
 @media screen and (min-width: 500px) {
   body {
