@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -324,57 +324,68 @@ button:active {
 
 /* Start checkout styles */
 
-main {
+/*main {
   display: flex;
   justify-content: center;
   align-items: top;
-}
+} */
 
-main section {
+.checkout section {
   margin: 2rem;
 }
 
-form {
+.checkout form {
   margin: 0 auto;
   width: 20rem;
 }
 
-fieldset {
+
+.checkout fieldset {
   margin-top: 1rem;
 }
 
-legend {
+.checkout legend {
   margin-left: 1rem;
 }
 
-.checkoutName, .checkoutAddress, .checkoutPayment {
+.checkoutName,
+.checkoutAddress,
+.checkoutPayment {
   display: flex;
   flex-direction: column;
   padding: 1rem;
 }
 
-form label {
+.checkout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* use 'flex-start' instead of 'top' */
+}
+
+
+.checkout label {
   margin-top: 1rem;
 }
 
-form input {
+.checkout input {
   padding: 0.25rem;
 }
 
-dl {
+.checkout dl {
   margin-top: 1rem;
   padding: 1rem;
   border: 0.2rem solid gray;
   border-radius: 0.5rem;
 }
 
-dl div {
+.checkout dl div {
   display: flex;
   gap: 0.5rem;
   padding: 1rem 0;
 }
 
-dt {
+.checkout dt {
   font-weight: bold;
 }
 
