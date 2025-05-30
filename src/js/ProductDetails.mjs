@@ -22,12 +22,14 @@ export default class ProductDetails {
 
   addProductToCart() {
     const cartItems = getLocalStorage("so-cart") || [];
-    console.log("Adding to cart:", this.product);
 
     const productToSave = {
       ...this.product,
-      Image: this.product.Images?.PrimaryMedium || this.product.Images?.PrimarySmall || "", // fallback
+      quantity: 1,
+      Image: this.product.Images?.PrimaryMedium || this.product.Images?.PrimarySmall || "",
     };
+
+    console.log("Adding to cart:", productToSave); // <-- THIS should show quantity
 
     cartItems.push(productToSave);
     setLocalStorage("so-cart", cartItems);
