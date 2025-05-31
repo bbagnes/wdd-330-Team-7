@@ -226,6 +226,14 @@ button:active {
   margin: 0.5em 0;
 }
 
+/* added this to scale image */
+.productImage img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
 .card__brand {
   font-size: var(--small-font);
 }
