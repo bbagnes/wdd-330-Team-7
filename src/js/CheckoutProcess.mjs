@@ -57,23 +57,26 @@ export default class CheckoutProcess {
         const order = Object.fromEntries(formData);
         order.orderDate = new Date().toISOString();
         order.items = this.packageItems();
-        order.orderTotal = this.orderTotal.toFixed(2);
-        order.tax = this.tax.toFixed(2);
+        order.orderTotal = this.orderTotal;
+        order.tax = this.tax;
         order.shipping = this.shipping;
 
         const services = new (await import('./ExternalServices.mjs')).default();
 
-        console.log("Order object being sent:", order);
+        console.log('🛒 Final ORDER being sent:', JSON.stringify(order, null, 2));
+
 
 
         try {
             const response = await services.checkout(order);
             console.log("Order submitted:", response);
-            localStorage.removeItem(this.key); // <-- clear the cart on checkout
-            window.location.href = '/checkout/thankyou.html';
-        } catch (err) {
-            console.error("Checkout failed:", err);
-        }
+            localStorage.removeItem(this.key);  
+            //window.location.href = '/checkout/thankyou.html';
+            } catch (err) {
+            console.error("❌ Checkout failed:", err);
+            throw err;
+            }
+
 
     }
 }
