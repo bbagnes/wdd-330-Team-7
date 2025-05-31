@@ -25,12 +25,20 @@ export default class ExternalServices {
   }
 
   async checkout(order) {
-    const response = await fetch(`${baseURL}checkout`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(order),
-    });
-    if (!response.ok) throw new Error('Checkout failed');
-    return await response.json();
+  const response = await fetch(`${baseURL}checkout`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(order),
+  });
+
+  const body = await response.text(); // Read the body whether ok or not
+
+  if (!response.ok) {
+    console.error('❌ Server response body:', body); // show real error
+    throw new Error(`Checkout failed: ${body}`);
   }
+
+  return JSON.parse(body);
+}
+
 }

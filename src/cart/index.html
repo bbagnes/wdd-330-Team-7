@@ -24,7 +24,12 @@
         <template id="cart-template">
           <li class="cart-card">
             <a href="/product_pages/index.html?product={{Id}}">
-              <img src="{{Image}}" alt="Product image" />
+              <picture>
+                <source media="(min-width: 1024px)" srcset="{{ImageLarge}}" />
+                <source media="(min-width: 600px)" srcset="{{ImageMedium}}" />
+                <img src="{{ImageSmall}}" alt="Product image" />
+              </picture>
+
             </a>
             <div class="card__info">
               <h2 class="card__name">{{Name}}</h2>

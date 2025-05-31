@@ -45,25 +45,32 @@ function productDetailsTemplate(product) {
   document.querySelector("#p-brand").textContent = product.Brand.Name;
   document.querySelector("#p-name").textContent = product.NameWithoutBrand;
 
-  const productImage = document.querySelector("#p-image");
-  productImage.src = product.Images.PrimaryExtraLarge;
-  productImage.alt = product.NameWithoutBrand;
-  const euroPrice = new Intl.NumberFormat('de-DE',
-    {
-      style: 'currency', currency: 'EUR',
-    }).format(Number(product.FinalPrice) * 0.85);
+  // create a picture element using the responsive images from the API
+  const picture = document.createElement('picture');
+  picture.innerHTML = `
+    <source media='(min-width: 1024px)' srcset='${product.Images.PrimaryExtraLarge}'>
+    <source media='(min-width: 600px)' srcset='${product.Images.PrimaryMedium}'>
+    <img id='p-image' src='${product.Images.PrimarySmall}' alt='${product.NameWithoutBrand}'>
+  `;
+
+  
+  const imageContainer = document.querySelector('#image-container'); 
+  imageContainer.innerHTML = ''; // Clear existing content
+  imageContainer.appendChild(picture);
+
+  const euroPrice = new Intl.NumberFormat('de-DE', {
+    style: 'currency', currency: 'EUR',
+  }).format(Number(product.FinalPrice) * 0.85);
   document.querySelector("#p-price").textContent = `${euroPrice}`;
   document.querySelector("#p-color").textContent = product.Colors[0].ColorName;
   document.querySelector("#p-description").innerHTML = product.DescriptionHtmlSimple;
 
   product.SuggestedRetailPrice = product.FinalPrice + 50;
 
-
   if (product.SuggestedRetailPrice > product.FinalPrice) {
     const discount = product.SuggestedRetailPrice - product.FinalPrice;
     const discountPercentage = Math.round((discount / product.SuggestedRetailPrice) * 100);
     document.querySelector("#p-discount").textContent = `You save ${discountPercentage}%!`;
-
   } else {
     document.querySelector("#p-discount").textContent = "";
   }
@@ -72,6 +79,6 @@ function productDetailsTemplate(product) {
   if (addToCartBtn) {
     addToCartBtn.dataset.id = product.Id;
   }
-
 }
+
 
