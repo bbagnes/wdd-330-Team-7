@@ -1,22 +1,20 @@
-import { loadHeaderFooter } from './utils.mjs';
 import CheckoutProcess from './CheckoutProcess.mjs';
 
 const checkout = new CheckoutProcess('so-cart', 'main.checkout');
 checkout.init();
 
-document.querySelector('form').addEventListener('submit', function(event) {
+document.querySelector('form').addEventListener('submit', function (event) {
   event.preventDefault();
 
   const { valid, messages } = validateForm(this);
   let messageBox = document.querySelector('#checkout-message');
- 
+
   if (!messageBox) {
     messageBox = document.createElement('p');
     messageBox.id = 'checkout-message';
     messageBox.style.marginTop = '1rem';
     messageBox.style.fontWeight = 'bold';
     this.appendChild(messageBox);
-    console.log('Created messageBox:', messageBox);
   }
 
   messageBox.textContent = '';
@@ -27,7 +25,8 @@ document.querySelector('form').addEventListener('submit', function(event) {
     return;
   }
 
-  checkout.checkout(this)
+  checkout
+    .checkout(this)
     .then(() => {
       messageBox.textContent = 'Order placed successfully!';
       messageBox.style.color = 'green';
@@ -43,7 +42,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
       messageBox.appendChild(document.createElement('br'));
       messageBox.appendChild(homeLink);
     })
-    .catch(err => {
+    .catch((err) => {
       messageBox.textContent = `Checkout failed: ${err.message}`;
       messageBox.style.color = 'red';
     });
@@ -52,7 +51,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
 function validateForm(form) {
   const firstName = form.querySelector('#fname').value.trim();
   const lastName = form.querySelector('#lname').value.trim();
-  const card = form.querySelector('#cardNumber').value.trim();  
+  const card = form.querySelector('#cardNumber').value.trim();
 
   let valid = true;
   let messages = [];
@@ -65,7 +64,7 @@ function validateForm(form) {
   if (!/^\d{16}$/.test(card)) {
     valid = false;
     messages.push('Card number must be 16 digits.');
-  }  
+  }
 
   return { valid, messages };
 }
