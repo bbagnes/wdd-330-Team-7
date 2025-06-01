@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -233,7 +233,6 @@ button:active {
   display: block;
 }
 
-
 .card__brand {
   font-size: var(--small-font);
 }
@@ -347,7 +346,6 @@ button:active {
   width: 20rem;
 }
 
-
 .checkout fieldset {
   margin-top: 1rem;
 }
@@ -370,7 +368,6 @@ button:active {
   align-items: flex-start;
   /* use 'flex-start' instead of 'top' */
 }
-
 
 .checkout label {
   margin-top: 1rem;
@@ -397,8 +394,6 @@ button:active {
   font-weight: bold;
 }
 
-
-
 /* End checkout styles */
 
 @media screen and (min-width: 500px) {
@@ -414,7 +409,7 @@ button:active {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
-  }  
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -432,7 +427,6 @@ button:active {
     width: 100%;
   }
 }
-
 
 footer {
   font-size: var(--small-font);
