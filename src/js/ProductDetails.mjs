@@ -33,6 +33,18 @@ export default class ProductDetails {
 
     cartItems.push(productToSave);
     setLocalStorage("so-cart", cartItems);
+
+    this.triggerCartButtonAnimation();
+  }
+
+  triggerCartButtonAnimation() {
+    if (!this.cartButton) {
+      this.cartButton = document.querySelector(".cart");
+    }
+
+    this.cartButton.classList.remove("cart-animation");
+    void this.cartButton.offsetWidth;
+    this.cartButton.classList.add("cart-animation");
   }
 
   renderProductDetails() {
