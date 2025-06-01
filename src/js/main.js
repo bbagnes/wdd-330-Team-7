@@ -4,5 +4,5 @@ import Alert from './alert.js';
 loadHeaderFooter();
 
 const alertSystem = new Alert('/json/alert.json');
- 
+
 alertSystem.init();

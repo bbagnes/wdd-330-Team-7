@@ -9,7 +9,7 @@ function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  constructor() { }
+  constructor() {}
 
   async getData(category) {
     const response = await fetch(`${baseURL}products/search/${category}`);
@@ -20,25 +20,24 @@ export default class ExternalServices {
   async findProductById(id) {
     const response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(response);
-    console.log("Fetched full product data:", data.Result);
+    console.log('Fetched full product data:', data.Result);
     return data.Result;
   }
 
   async checkout(order) {
-  const response = await fetch(`${baseURL}checkout`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(order),
-  });
+    const response = await fetch(`${baseURL}checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order),
+    });
 
-  const body = await response.text(); // Read the body whether ok or not
+    const body = await response.text(); // Read the body whether ok or not
 
-  if (!response.ok) {
-    console.error('❌ Server response body:', body); // show real error
-    throw new Error(`Checkout failed: ${body}`);
+    if (!response.ok) {
+      console.error('❌ Server response body:', body); // show real error
+      throw new Error(`Checkout failed: ${body}`);
+    }
+
+    return JSON.parse(body);
   }
-
-  return JSON.parse(body);
-}
-
 }
