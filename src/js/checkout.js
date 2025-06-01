@@ -1,4 +1,3 @@
-import { loadHeaderFooter } from './utils.mjs';
 import CheckoutProcess from './CheckoutProcess.mjs';
 
 const checkout = new CheckoutProcess('so-cart', 'main.checkout');
@@ -16,7 +15,6 @@ document.querySelector('form').addEventListener('submit', function (event) {
     messageBox.style.marginTop = '1rem';
     messageBox.style.fontWeight = 'bold';
     this.appendChild(messageBox);
-    console.log('Created messageBox:', messageBox);
   }
 
   messageBox.textContent = '';
